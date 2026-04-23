@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Reports</h2>
+
+<div class="card">
+<a href="/reports/daily"><button>📅 Daily</button></a>
+<a href="/reports/weekly"><button>📊 Weekly</button></a>
+<a href="/reports/monthly"><button>📈 Monthly</button></a>
+</div>
+
+<div class="card">
+{% if tasks %}
+<h3>History</h3>
+
+{% for t in tasks %}
+<div>
+<b>{{ t.title }}</b> - {{ t.status }} <br>
+
+📅 {{ t.created_at.strftime('%d-%m-%Y %H:%M') }}
+
+{% if t.completed_at %}
+<br>✅ {{ t.completed_at.strftime('%d-%m-%Y %H:%M') }}
+{% endif %}
+</div>
+<hr>
+{% endfor %}
+
+{% endif %}
+</div>
+
+{% endblock %}

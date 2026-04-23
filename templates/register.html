@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+<h2>Register</h2>
+
+{% for m in get_flashed_messages() %}
+<p class="msg">{{m}}</p>
+
+{% endfor %}
+
+<form method="POST" enctype="multipart/form-data">
+<input name="username" placeholder="Username" required>
+<input name="password" type="password" placeholder="Password" required>
+
+<select name="role">
+<option value="">Select Role</option>
+<option value="admin">Admin</option>
+<option value="electrician">Electrician</option>
+</select>
+
+<input type="file" name="profile_pic">
+
+<button>Register</button>
+
+<p style="margin-top:10px; text-align:center;">
+Already have account? <a href="/login">Login</a>
+</p>
+</form>
+</div>
+{% endblock %}

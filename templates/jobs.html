@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Jobs</h2>
+
+<form method="POST">
+<input name="title" placeholder="Job">
+<input name="location" placeholder="Location">
+<button>Add</button>
+</form>
+
+{% for j in jobs %}
+<p>{{j.title}} - {{j.location}}</p>
+{% endfor %}
+
+{% endblock %}

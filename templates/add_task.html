@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Add Task</h2>
+
+<form method="POST">
+
+<input name="title" placeholder="Task Name" required>
+
+<select name="user_id" required>
+<option value="">-- Select Electrician --</option>
+{% for e in electricians %}
+<option value="{{ e.id }}">{{ e.username }}</option>
+{% endfor %}
+</select>
+
+<select name="job_id" required>
+<option value="">-- Select Job --</option>
+{% for j in jobs %}
+<option value="{{ j.id }}">{{ j.title }}</option>
+{% endfor %}
+</select>
+
+<button>Add Task</button>
+
+</form>
+
+{% endblock %}

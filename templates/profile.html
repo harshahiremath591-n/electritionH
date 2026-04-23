@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card" style="text-align:center; max-width:400px; margin:auto;">
+
+<h2>👤 Profile</h2>
+
+{% if user.profile_pic %}
+<img src="data:image/png;base64,{{ user.profile_pic }}" width="120">
+{% else %}
+<img src="https://via.placeholder.com/120">
+{% endif %}
+
+<h3>{{ user.username }}</h3>
+<p>Role: {{ user.role }}</p>
+
+</div>
+
+{% endblock %} 

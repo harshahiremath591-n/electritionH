@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Advanced Electrician System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    height:100vh;
+    overflow:hidden;
+    color:white;
+}
+
+/* DARK OVERLAY (FIX WHITE LOOK) */
+.overlay {
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+}
+
+/* FLOATING LIGHTS */
+.circle {
+    position:absolute;
+    border-radius:50%;
+    background:rgba(0,198,255,0.15);
+    filter: blur(40px);
+    animation: float 10s infinite;
+}
+
+.circle:nth-child(1){width:200px;height:200px;top:10%;left:10%;}
+.circle:nth-child(2){width:300px;height:300px;top:70%;left:80%;}
+.circle:nth-child(3){width:150px;height:150px;top:40%;left:50%;}
+
+@keyframes float {
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-40px);}
+    100%{transform:translateY(0);}
+}
+
+/* MAIN CONTAINER */
+.container {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    background: rgba(255,255,255,0.08);
+    padding:40px;
+    border-radius:20px;
+    backdrop-filter: blur(10px);
+    box-shadow:0 10px 40px rgba(0,0,0,0.5);
+}
+
+/* ICON */
+.icon {
+    font-size:70px;
+    margin-bottom:10px;
+    color:#00c6ff;
+    animation: glow 2s infinite;
+}
+
+@keyframes glow {
+    0%{text-shadow:0 0 10px #00c6ff;}
+    50%{text-shadow:0 0 25px #00c6ff;}
+    100%{text-shadow:0 0 10px #00c6ff;}
+}
+
+/* TITLE */
+h1 {
+    font-size:40px;
+    margin:10px 0;
+}
+
+h1 span {
+    color:#00c6ff;
+}
+
+/* SUBTITLE */
+p {
+    opacity:0.85;
+    margin-bottom:25px;
+}
+
+/* BUTTONS */
+.btn {
+    padding:12px 28px;
+    margin:10px;
+    border:none;
+    border-radius:30px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+/* LOGIN BUTTON */
+.login {
+    background:#00c6ff;
+    color:black;
+    font-weight:600;
+}
+
+/* REGISTER BUTTON */
+.register {
+    background:transparent;
+    border:2px solid #00c6ff;
+    color:white;
+}
+
+/* HOVER EFFECT */
+.btn:hover {
+    transform:scale(1.1);
+    box-shadow:0 0 15px #00c6ff;
+}
+</style>
+
+</head>
+<body>
+
+<div class="overlay"></div>
+
+<!-- FLOATING LIGHT EFFECT -->
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+
+<!-- MAIN -->
+<div class="container">
+
+    <div class="icon">⚡</div>
+
+    <h1>Advanced <span>Electrician</span> System</h1>
+
+    <p>Smart Task Management • Real-Time Tracking • Material Control</p>
+
+    <a href="/login">
+        <button class="btn login">Login</button>
+    </a>
+
+    <a href="/register">
+        <button class="btn register">Register</button>
+    </a>
+
+</div>
+
+</body>
+</html>

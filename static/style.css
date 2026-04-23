@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color: white;
+}
+
+/* NAV */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 25px;
+    background: rgba(0,0,0,0.85);
+    align-items: center;
+    position: sticky;
+    top: 0;
+}
+
+nav a {
+    color: #00c6ff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: white;
+}
+
+/* CONTAINER */
+.container {
+    padding: 20px;
+}
+
+/* CARD */
+.card {
+    background: rgba(255,255,255,0.10);
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* INPUT */
+input, select {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    width: 100%;
+}
+
+/* BUTTON */
+button {
+    background: #00c6ff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #00a0d1;
+}
+
+/* GRID */
+.grid {
+    display: flex;
+    gap: 20px;
+}
+
+/* PROFILE IMAGE */
+img {
+    border-radius: 50%;
+}

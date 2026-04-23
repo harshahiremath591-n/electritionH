@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Electricians</h2>
+
+{% for u in users %}
+<p>{{u.username}}</p>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Dashboard</h2>
+
+<!-- ================= USER INFO ================= -->
+<div class="card" style="text-align:center;">
+    <h3>{{ session.get('username') }}</h3>
+    <p>Role: {{ session.get('role') }}</p>
+</div>
+
+<!-- ================= STATS ================= -->
+<div class="grid">
+    <div class="card">✅ Completed: {{ completed }}</div>
+    <div class="card">⏳ Pending: {{ pending }}</div>
+    <div class="card">🔄 Processing: {{ processing }}</div>
+</div>
+
+<!-- ================= CHART ================= -->
+<div class="card">
+    <canvas id="chart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+new Chart(document.getElementById('chart'), {
+    type: 'doughnut',
+    data: {
+        labels: ['Completed', 'Pending', 'Processing'],
+        datasets: [{
+            data: [{{ completed }}, {{ pending }}, {{ processing }}],
+            backgroundColor: ['green', 'orange', 'blue']
+        }]
+    }
+});
+</script>
+
+<!-- ================= ADMIN SECTION ================= -->
+{% if session.get('role') == 'admin' %}
+<div class="card">
+    <h3>Admin Panel</h3>
+    <p>You can assign tasks from <b>Add Task</b> page</p>
+</div>
+{% endif %}
+
+<!-- ================= TASK LIST ================= -->
+<div class="card">
+<h3>Tasks</h3>
+
+{% for t in tasks %}
+
+<div class="card">
+
+    <!-- TITLE -->
+    <b>{{ t.title }}</b>
+
+    <!-- STATUS -->
+    <span>
+        {% if t.status == 'Completed' %}
+            <b style="color:green">Completed</b>
+        {% elif t.status == 'Processing' %}
+            <b style="color:blue">Processing</b>
+        {% else %}
+            <b style="color:orange">Pending</b>
+        {% endif %}
+    </span>
+
+    <br>
+
+    <!-- CREATED DATE -->
+    {% if t.created_at %}
+        <small>📅 Created: {{ t.created_at.strftime('%d-%m-%Y %H:%M') }}</small>
+    {% endif %}
+
+    <!-- COMPLETED DATE -->
+    {% if t.completed_at %}
+        <br>
+        <small>✅ Completed: {{ t.completed_at.strftime('%d-%m-%Y %H:%M') }}</small>
+    {% endif %}
+
+    <br>
+
+    <!-- ELECTRICIAN ACTIONS -->
+    {% if session.get('role') == 'electrician' %}
+    <form method="POST" action="/update/{{ t.id }}" enctype="multipart/form-data">
+
+        <button name="status" value="Pending">⏳ Pending</button>
+        <button name="status" value="Processing">🔄 Processing</button>
+        <button name="status" value="Completed">✅ Completed</button>
+
+        <br><br>
+
+        <input type="file" name="report">
+        <button type="submit">Submit Work</button>
+
+    </form>
+    {% endif %}
+
+    <!-- REPORT -->
+    {% if t.report %}
+        <br>
+        <a href="/static/uploads/{{ t.report }}" target="_blank">📄 View Report</a>
+    {% endif %}
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}
